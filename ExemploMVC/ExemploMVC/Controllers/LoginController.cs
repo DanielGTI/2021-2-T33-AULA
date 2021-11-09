@@ -1,5 +1,4 @@
-﻿using ExemploMVC.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,51 +7,48 @@ using System.Threading.Tasks;
 
 namespace ExemploMVC.Controllers
 {
-    public class AlunoController : Controller
+    public class LoginController : Controller
     {
-        // GET: AlunoController
+        // GET: LoginController
         public ActionResult Index()
         {
-            ViewData["Message"] = "Bem vindo ao semestre de 2021";
             return View();
         }
 
-        // GET: AlunoController/Details/5
+        // GET: LoginController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: AlunoController/Create
-        [HttpGet]
+        // GET: LoginController/Create
         public ActionResult Create()
         {
-            return View(new AlunoModel() );
+            return View();
         }
 
-        // POST: AlunoController/Create
+        // POST: LoginController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AlunoModel pModel)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                pModel.Salvar();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return RedirectToAction("/Create");
+                return View();
             }
         }
 
-        // GET: AlunoController/Edit/5
+        // GET: LoginController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: AlunoController/Edit/5
+        // POST: LoginController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -67,13 +63,13 @@ namespace ExemploMVC.Controllers
             }
         }
 
-        // GET: AlunoController/Delete/5
+        // GET: LoginController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: AlunoController/Delete/5
+        // POST: LoginController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
